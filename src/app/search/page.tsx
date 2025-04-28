@@ -9,6 +9,9 @@ interface PokemonDetails {
     name: string;
     sprites: {
         front_default: string;
+        back_default: string;
+        front_shiny: string;
+        back_shiny: string;
     };
     types: {
         type: {
@@ -66,23 +69,25 @@ export default function SearchPage() {
 
     return (
         <div className="min-h-screen p-8 flex flex-col items-center justify-center">
-            <div className="flex flex-col items-center justify-center max-w-2xl ">
-                <h1>Pokemon Search</h1>
-                <form onSubmit={handleSearch}>
-                    <div className="flex items-center justify-center h-screen gap-2">
-                        <input
-                            type="text"
-                            value={searchTerm}
-                            onChange={(e) => setSearchTerm(e.target.value)}
-                            placeholder="Search for a Pokemon"
-                            className="border-2 border-gray-300 rounded-md p-2"
-                        />
-                        <button
-                            type="submit"
-                            className="border-2 border-gray-300 rounded-md p-2"
-                        >Search</button>
-                    </div>
-                </form>
+            <div className="flex flex-col  justify-center max-w-2xl ">
+                <div className="flex items-center justify-center gap-2">
+                    <h1 className="text-2xl font-bold text-center text-red-500 rounded-lg border-2 border-black p-2">Pokemon Search</h1>
+                    <form onSubmit={handleSearch}>
+                        <div className="flex items-center justify-center h-screen gap-2">
+                            <input
+                                type="text"
+                                value={searchTerm}
+                                onChange={(e) => setSearchTerm(e.target.value)}
+                                placeholder="Search for a Pokemon"
+                                className="border-2 border-gray-300 rounded-md p-2"
+                            />
+                            <button
+                                type="submit"
+                                className="border-2 border-gray-300 rounded-md p-2"
+                            >Search</button>
+                        </div>
+                    </form>
+                </div>
 
                 {loading && (
                     <div className="text-center py-8">
@@ -97,13 +102,39 @@ export default function SearchPage() {
                 )}
 
                 {pokemon && !loading && !error && (
-                    <div className="bg-white shadow-lg rounded-md p-4">
-                        <div>
-                            <img
-                                src={pokemon.sprites.front_default}
-                                alt={pokemon.name}
-                                className="w-50 h-50 object-contain"
-                            />
+                    <div className="bg-gray-50 shadow-lg rounded-md p-14">
+                        <div className="flex flex-col items-center justify-center gap-4">
+                            <div className="flex items-center justify-center gap-4">
+                                <h1 className="text-2xl font-bold text-center text-gray-800">
+                                    Normal
+                                </h1>
+                                <img
+                                    src={pokemon.sprites.front_default}
+                                    alt={pokemon.name}
+                                    className="w-40 h-40 object-contain"
+                                />
+                                <img
+                                    src={pokemon.sprites.back_default}
+                                    alt={pokemon.name}
+                                    className="w-40 h-40 object-contain"
+                                />
+
+                            </div>
+                            <div className="flex items-center justify-center gap-4">
+                                <h1 className="text-2xl font-bold text-center text-gray-800">
+                                    Shiny{" "}
+                                </h1>
+                                <img
+                                    src={pokemon.sprites.front_shiny}
+                                    alt={pokemon.name}
+                                    className="w-40 h-40 object-contain"
+                                />
+                                <img
+                                    src={pokemon.sprites.back_shiny}
+                                    alt={pokemon.name}
+                                    className="w-40 h-40 object-contain"
+                                />
+                            </div>
                         </div>
                         <div>
                             <h1 className="text-2xl font-bold text-center text-gray-800">{pokemon.name}</h1>
