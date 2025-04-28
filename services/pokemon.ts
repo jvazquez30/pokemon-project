@@ -12,6 +12,20 @@ export interface PokemonListResponse {
     results: Pokemon[];
 }
 
+export interface PokemonDetails {
+    name: string;
+    sprites: {
+        front_default: string;
+    };
+    types: {
+        type: {
+            name: string;
+        };
+    }[];
+    height: number;
+    weight: number;
+}   
+
 export async function getPokemonList(limit: number = 20, offset: number = 0): Promise<PokemonListResponse> {
     const response = await fetch(
         `${POKEMON_API_URL}/pokemon?limit=${limit}&offset${offset}`
