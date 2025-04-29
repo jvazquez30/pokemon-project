@@ -69,12 +69,12 @@ export default function SearchPage() {
     }
 
     return (
-        <div className="min-h-screen p-8 flex flex-col items-center justify-center">
-            <div className="flex flex-col  justify-center max-w-2xl ">
-                <div className="flex items-center justify-center gap-2">
+        <div className="p-8 flex flex-col items-center justify-center">
+            <div className="flex-col justify-center max-w-2xl">
+                <div className="gap-2">
                     <h1 className="text-2xl font-bold text-center text-red-500 rounded-lg border-2 border-black p-2">Pokemon Search</h1>
                     <form onSubmit={handleSearch}>
-                        <div className="flex items-center justify-center h-screen gap-2">
+                        <div className="gap-2 p-2">
                             <input
                                 type="text"
                                 value={searchTerm}
