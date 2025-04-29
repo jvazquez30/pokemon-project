@@ -26,6 +26,7 @@ interface PokemonDetails {
         };
         base_stat: number;
     }[];
+    id: number;
 }
 
 export default function SearchPage() {
@@ -121,7 +122,7 @@ export default function SearchPage() {
 
                             </div>
                             <div className="flex items-center justify-center gap-4">
-                                <h1 className="text-2xl font-bold text-center text-gray-800">
+                                <h1 className="text-2xl font-bold text-center text-gray-800 p-3">
                                     Shiny{" "}
                                 </h1>
                                 <img
@@ -136,22 +137,26 @@ export default function SearchPage() {
                                 />
                             </div>
                         </div>
-                        <div>
-                            <h1 className="text-2xl font-bold text-center text-gray-800">{pokemon.name}</h1>
-                            <p className="text-sm text-gray-500"> <span>Height:</span> {pokemon.height}</p>
-                            <p className="text-sm text-gray-500"> <span>Weight:</span> {pokemon.weight}</p>
-                            <p className="text-sm text-gray-500"> <span>Types:</span> {pokemon.types.map((type, index) => (
-                                <span key={index}>{type.type.name}{index < pokemon.types.length - 1 ? ', ' : ''}</span>
-                            ))}</p>
-                            <p className="text-sm text-gray-500"> <span>Stats:</span></p>
-                            <ul>
-                                {pokemon.stats.map(stat => (
-                                    <li key={stat.stat.name}
-                                        className="text-sm text-gray-500">
-                                        <span className="text-gray-500">{stat.stat.name}:</span> {stat.base_stat}
-                                    </li>
-                                ))}
-                            </ul>
+                        <div className="flex flex-col items-center justify-center gap-4">
+                            <h1 className="text-2xl font-bold text-center text-gray-800">{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)} <span className="text-2xl font-bold text-center text-gray-800">#{pokemon.id}</span></h1>
+                            <div className="flex flex-row items-center justify-center gap-4">
+                                <p className="text-sm text-gray-500"> <span>Height:</span> {pokemon.height}</p>
+                                <p className="text-sm text-gray-500"> <span>Weight:</span> {pokemon.weight}</p>
+                                <p className="text-sm text-gray-500"> <span>Types:</span> {pokemon.types.map((type, index) => (
+                                    <span key={index}>{type.type.name}{index < pokemon.types.length - 1 ? ', ' : ''}</span>
+                                ))}</p>
+                            </div>
+                            <div className="">
+                                <p className="text-sm text-gray-500"> <span>Stats:</span></p>
+                                <ul>
+                                    {pokemon.stats.map(stat => (
+                                        <li key={stat.stat.name}
+                                            className="text-sm text-gray-500">
+                                            <span className="text-gray-500">{stat.stat.name}:</span> {stat.base_stat}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 )}
