@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { getPokemonDetails } from "../../../services/pokemon";
 import Image from "next/image";
-
+import Link from "next/link";
 interface PokemonDetails {
     name: string;
     sprites: {
@@ -70,6 +70,9 @@ export default function SearchPage() {
 
     return (
         <div className="p-8 flex flex-col items-center justify-center">
+            <header>
+                <Link href="/">Home</Link>
+            </header>
             <div className="flex-col justify-center max-w-2xl">
                 <div className="gap-2">
                     <h1 className="text-2xl font-bold text-center text-red-500 rounded-lg border-2 border-black p-2">Pokemon Search</h1>
