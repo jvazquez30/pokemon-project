@@ -14,8 +14,10 @@ export interface PokemonListResponse {
 
 export interface PokemonDetails {
     name: string;
+    id: number;
     sprites: {
         front_default: string;
+        front_shiny: string;
     };
     types: {
         type: {
@@ -24,6 +26,12 @@ export interface PokemonDetails {
     }[];
     height: number;
     weight: number;
+    stats: {
+        stat: {
+            name: string;
+        };
+        base_stat: number;
+    }[];
 }   
 
 export async function getPokemonList(limit: number = 20, offset: number = 0): Promise<PokemonListResponse> {

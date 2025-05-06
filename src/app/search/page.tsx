@@ -2,34 +2,9 @@
 
 import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { getPokemonDetails } from "../../../services/pokemon";
+import { getPokemonDetails, PokemonDetails } from "../../../services/pokemon";
 import Image from "next/image";
 import Link from "next/link";
-
-
-interface PokemonDetails {
-    name: string;
-    sprites: {
-        front_default: string;
-        back_default: string;
-        front_shiny: string;
-        back_shiny: string;
-    };
-    types: {
-        type: {
-            name: string;
-        };
-    }[];
-    height: number;
-    weight: number;
-    stats: {
-        stat: {
-            name: string;
-        };
-        base_stat: number;
-    }[];
-    id: number;
-}
 
 const fetchAllPokemon = async (): Promise<string[]> => {
     const res = await fetch('https://pokeapi.co/api/v2/pokemon?limit=1000');
@@ -47,7 +22,7 @@ export default function SearchPage() {
     const searchParams = useSearchParams();
     const router = useRouter();
 
-     // Fetch all pokemon names on mount
+    // Fetch all pokemon names on mount
     useEffect(() => {
         fetchAllPokemon().then(setAllPokemon);
     }, []);
@@ -60,10 +35,10 @@ export default function SearchPage() {
             fetchPokemon(query);
         }
     }, [searchParams]);
-    
+
     useEffect(() => {
         if (searchTerm.length > 0) {
-            const filteredPokemon = allPokemon.filter(name => 
+            const filteredPokemon = allPokemon.filter(name =>
                 name.toLowerCase().includes(searchTerm.toLowerCase()));
             setSuggestions(filteredPokemon);
         } else {
@@ -71,7 +46,7 @@ export default function SearchPage() {
         }
     }, [searchTerm, allPokemon]);
 
-    
+
     const fetchPokemon = async (name: string) => {
         setLoading(true);
         setError(null);
@@ -86,7 +61,7 @@ export default function SearchPage() {
             setLoading(false);
         }
     }
-    
+
     const handleSuggestionClick = (name: string) => {
         setSearchTerm(name);
         setSuggestions([]);
@@ -111,33 +86,33 @@ export default function SearchPage() {
                     <form onSubmit={handleSearch}>
                         <div className="gap-2 p-2 flex flex-row items-center justify-center">
                             <div className="relative">
-                            <input
-                                type="text"
-                                value={searchTerm}
-                                onChange={(e) => setSearchTerm(e.target.value)}
-                                placeholder="Search Pokemon"
-                                className="border-2 border-gray-300 rounded-md p-2"
-                            />
+                                <input
+                                    type="text"
+                                    value={searchTerm}
+                                    onChange={(e) => setSearchTerm(e.target.value)}
+                                    placeholder="Search Pokemon"
+                                    className="border-2 border-gray-300 rounded-md p-2"
+                                />
                                 {suggestions.length > 0 && (
-                                   <ul className="absolute top-12 left-0 w-full bg-white border border-gray-300 rounded-md shadow-lg z-10 max-h-60 overflow-y-auto">
-                                       {suggestions.map(name => (
-                                           <li
-                                               key={name}
-                                               className="p-2 hover:bg-gray-100 cursor-pointer"
-                                               onClick={() => handleSuggestionClick(name)}
-                                           >
-                                               {name.charAt(0).toUpperCase() + name.slice(1)}
-                                           </li>
-                                       ))}
-                                   </ul>
-                               )}
+                                    <ul className="absolute top-12 left-0 w-full bg-white border border-gray-300 rounded-md shadow-lg z-10 max-h-60 overflow-y-auto">
+                                        {suggestions.map(name => (
+                                            <li
+                                                key={name}
+                                                className="p-2 hover:bg-gray-100 cursor-pointer"
+                                                onClick={() => handleSuggestionClick(name)}
+                                            >
+                                                {name.charAt(0).toUpperCase() + name.slice(1)}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
                             </div>
                             <button
                                 type="submit"
                                 className="border-2 border-gray-300 rounded-md p-2"
                             >Search
-                            
-                             {/* Suggestions dropdown */}
+
+                                {/* Suggestions dropdown */}
                             </button>
                         </div>
                     </form>
