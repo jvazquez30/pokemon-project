@@ -36,7 +36,7 @@ export interface PokemonDetails {
 
 export async function getPokemonList(limit: number = 20, offset: number = 0): Promise<PokemonListResponse> {
     const response = await fetch(
-        `${POKEMON_API_URL}/pokemon?limit=${limit}&offset${offset}`
+        `${POKEMON_API_URL}/pokemon?limit=1000`
     );
 
     if (!response.ok) {

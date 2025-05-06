@@ -5,16 +5,19 @@ import { getPokemonList, getPokemonDetails } from "../../../services/pokemon"
 export default async function PokemonPage() {
 
     const pokemonList = await getPokemonList();
-    const pokemonDetails = await getPokemonDetails(pokemonList.results[0].name);
+    const pokemonDetails = await Promise.all(
+        pokemonList.results.map(pokemon => getPokemonDetails(pokemon.name))
+    )
 
     return (
         <div>
             <div>
                 <h1>Pokemon</h1>
                 <ul>
-                    {pokemonList.results.map(pokemon => (
-                        <li key={pokemon.name}>
-                            {pokemon.name}</li>
+                    {pokemonDetails.map((details, id) => (
+                        <li key={id}>
+                            {details.name}
+                            {details.id}</li>
                     ))}
                 </ul>
             </div>
