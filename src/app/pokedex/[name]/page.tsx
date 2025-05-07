@@ -49,17 +49,34 @@ export default function Pokemon() {
 
 
   return (
-    <div>
+    <div className="">
       <header className="flex justify-center items-center w-full bg-red-600">
         <Image src="/pokeTrainer.png" alt="Pokemon" width={300} height={300} />
       </header>
-
-      <Link href={`/pokedex`}>
+      <Link href={`/pokedex`} className="">
         Go Back
       </Link>
 
-      <div>
-        {pokemon.name}
+      <div className="flex justify-center">
+        <div className="">
+          <div className="flex flex-col items-center">
+            <h1 className="font-bold text-2xl">Normal</h1>
+            <Image
+              src={pokemon.sprites.front_default}
+              alt={pokemon.name}
+              width={200}
+              height={300}
+            />
+            <h1 className="text-2xl font-bold">Shiny</h1>
+            <Image
+              src={pokemon.sprites.front_shiny}
+              alt={pokemon.name}
+              width={200}
+              height={300}
+            />
+          </div>
+          {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)} #{pokemon.id}
+        </div>
       </div>
 
     </div>
