@@ -12,7 +12,7 @@ export default async function Pokemon() {
                 <Image src="/pokeTrainer.png" alt="Pokemon" width={300} height={300} />
             </header>
 
-            <Link href={`/pokemon`}>
+            <Link href={`/pokedex`}>
                 Go Back
             </Link>
 

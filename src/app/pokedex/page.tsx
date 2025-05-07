@@ -26,7 +26,7 @@ export default async function PokemonPage() {
                     {pokemonDetails.map((pokemon, id) => (
                         <li key={id} className="p-3 border">
                             <div>
-                                <Link href={`/pokemon/${pokemon.name}`} className="hover:text-blue-400 hover:underline">
+                                <Link href={`/pokedex/${pokemon.name}`} className="hover:text-blue-400 hover:underline">
                                 {pokemon.id} - {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
                                 </Link>
                             </div>
