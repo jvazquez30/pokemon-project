@@ -36,7 +36,7 @@ export interface PokemonDetails {
 
 export async function getPokemonList(limit: number = 20, offset: number = 0): Promise<PokemonListResponse> {
     const response = await fetch(
-        `${POKEMON_API_URL}/pokemon?limit=1000`
+        `${POKEMON_API_URL}/pokemon?limit=151`
     );
 
     if (!response.ok) {
@@ -44,7 +44,7 @@ export async function getPokemonList(limit: number = 20, offset: number = 0): Pr
 
     }
 
-    return response.json()
+    return response.json();
 }
 
 export async function getPokemonDetails(name: string) {
@@ -56,3 +56,13 @@ export async function getPokemonDetails(name: string) {
 
     return response.json();
 }
+
+export async function getPokemonEvolutions(id: number) {
+    const response = await fetch(`${POKEMON_API_URL}/evolution-chain/${id}/`)
+
+    if (!response.ok) {
+        throw new Error(`Failed to retrieve evolution details for id: ${id}`)
+    }
+    
+    return response.json();
+} 
