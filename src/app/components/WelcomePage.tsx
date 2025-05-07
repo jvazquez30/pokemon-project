@@ -8,9 +8,10 @@ export default function WelcomePage() {
                 <h1>Welcome to the PokeTrainer</h1>
                 <p>This is a beginner friendly site to help you learn about Pokemon</p>
             </div>
-            <div className="flex flex-col items-center justify-center">
-                <div>
+            <div className="flex flex-col items-center justify-center ">
+                <div className="flex gap-2">
                     <Link href="/search" className="bg-blue-500 text-white p-2 rounded-md">Search For Pokemon</Link>
+                    <Link href="/pokemon" className="bg-red-500 text-white p-2 rounded-md">Pokedex</Link>
                 </div>
             </div>
         </div>
