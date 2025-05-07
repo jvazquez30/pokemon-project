@@ -76,8 +76,9 @@ export default function SearchPage() {
     }
 
     return (
-        <div className="p-8 flex flex-col items-center justify-center">
-            <header>
+        <div className="flex flex-col items-center justify-center">
+            <header className="flex justify-center items-center w-full bg-red-600">
+                <Image src="/pokeTrainer.png" alt="Pokemon" width={300} height={300} />
                 <Link href="/">Home</Link>
             </header>
             <div className="flex-col justify-center max-w-2xl">

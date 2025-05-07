@@ -32,7 +32,7 @@ export interface PokemonDetails {
         };
         base_stat: number;
     }[];
-}   
+}
 
 export async function getPokemonList(limit: number = 10000, offset: number = 0): Promise<PokemonListResponse> {
     const response = await fetch(
@@ -63,6 +63,6 @@ export async function getPokemonEvolutions(id: number) {
     if (!response.ok) {
         throw new Error(`Failed to retrieve evolution details for id: ${id}`)
     }
-    
+
     return response.json();
 } 

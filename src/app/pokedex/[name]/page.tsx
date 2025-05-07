@@ -1,26 +1,67 @@
+'use client'
 
-import Link from "next/link"   
-import Image from "next/image" 
+import { getPokemonDetails, PokemonDetails } from "../../../../services/pokemon"
+import Link from "next/link"
+import Image from "next/image"
+import { useEffect, useState } from "react"
+import { useParams } from "next/navigation"
 
-export default async function Pokemon() {
+export default function Pokemon() {
+  const params = useParams()
+  const [pokemon, setPokemon] = useState<PokemonDetails | null>(null);
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
+  useEffect(() => {
+    const fetchPokemon = async () => {
+      try {
+        const data = await getPokemonDetails(params.name as string);
+        setPokemon(data)
+      } catch (error) {
+        console.error('Error fetching Pokemon Details')
+        setError('Pokemon Not Found')
+      } finally {
+        setLoading(false)
+      }
+    };
+    fetchPokemon()
+  }, [params.name])
 
-
+  if (loading) {
     return (
-        <div>
-            <header className="flex justify-center items-center w-full bg-red-600">
-                <Image src="/pokeTrainer.png" alt="Pokemon" width={300} height={300} />
-            </header>
-
-            <Link href={`/pokedex`}>
-                Go Back
-            </Link>
-
-            <div>
-            Pokemon here
-
-            </div>
-        
-        </div>
+      <div>
+        <div> </div>
+      </div>
     )
+  }
+
+  if (error) {
+    return (
+      <div>
+        {error}
+      </div>
+    )
+  }
+
+  if (!pokemon) {
+    return null;
+  }
+
+
+  return (
+    <div>
+      <header className="flex justify-center items-center w-full bg-red-600">
+        <Image src="/pokeTrainer.png" alt="Pokemon" width={300} height={300} />
+      </header>
+
+      <Link href={`/pokedex`}>
+        Go Back
+      </Link>
+
+      <div>
+        {pokemon.name}
+      </div>
+
+    </div>
+  )
 }

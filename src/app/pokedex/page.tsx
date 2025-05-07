@@ -17,7 +17,7 @@ export default async function PokemonPage() {
             </header>
 
             <Link href={'/'}>
-            Go Home
+                Go Home
             </Link>
 
             <div className="">
@@ -27,7 +27,7 @@ export default async function PokemonPage() {
                         <li key={id} className="p-3 border">
                             <div>
                                 <Link href={`/pokedex/${pokemon.name}`} className="hover:text-blue-400 hover:underline">
-                                {pokemon.id} - {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
+                                    {pokemon.id} - {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
                                 </Link>
                             </div>
                         </li>
