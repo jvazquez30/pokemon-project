@@ -82,6 +82,9 @@ export default function Pokemon() {
               Types: {pokemon.types.map((type, index) => (
                 <span key={index}>{type.type.name.charAt(0).toUpperCase() + type.type.name.slice(1)}{index < pokemon.types.length - 1 ? ',' : ""}</span>
               ))}
+              Stats: {pokemon.stats.map((stat, index) => (
+                <span key={index}>{stat.stat.name} {stat.base_stat}</span>
+              ))}
             </p>
           </div>
         </div>
