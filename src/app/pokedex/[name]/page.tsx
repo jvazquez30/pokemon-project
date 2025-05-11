@@ -76,15 +76,21 @@ export default function Pokemon() {
             />
           </div>
 
-          <div>
+          <div className="border p-3">
             <h1>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)} #{pokemon.id}</h1>
             <p>
               Types: {pokemon.types.map((type, index) => (
                 <span key={index}>{type.type.name.charAt(0).toUpperCase() + type.type.name.slice(1)}{index < pokemon.types.length - 1 ? ',' : ""}</span>
               ))}
-              Stats: {pokemon.stats.map((stat, index) => (
+            </p>
+            <p>
+            Stats: {pokemon.stats.map((stat, index) => (
                 <span key={index}>{stat.stat.name} {stat.base_stat}</span>
               ))}
+            </p>
+            <p>
+              Height: {pokemon.height}
+              Weight: {pokemon.weight}
             </p>
           </div>
         </div>
