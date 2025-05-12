@@ -31,7 +31,7 @@ export default function Pokemon() {
     return (
       <div>
         <div> </div>
-      </div>  
+      </div>
     )
   }
 
@@ -51,9 +51,9 @@ export default function Pokemon() {
   return (
     <div className="">
       <header className="flex justify-center items-center w-full bg-red-600">
-        <Image src="/pokeTrainer.png" alt="Pokemon" width={300} height={300} />
+        <Image src="/pokeTrainer.png" alt="Pokemon" width={300} height={300} className="m-auto h-auto" />
       </header>
-      <Link href={`/pokedex`} className="">
+      <Link href={`/pokedex`} className="underline pl-1 pt-1">
         Go Back
       </Link>
 
@@ -62,35 +62,40 @@ export default function Pokemon() {
           <div className="flex flex-col items-center">
             <h1 className="font-bold text-2xl">Normal</h1>
             <Image
+              className=""
               src={pokemon.sprites.front_default}
               alt={pokemon.name}
               width={200}
-              height={300}
+              height={200}
             />
             <h1 className="text-2xl font-bold">Shiny</h1>
             <Image
               src={pokemon.sprites.front_shiny}
               alt={pokemon.name}
               width={200}
-              height={300}
+              height={200}
             />
           </div>
 
-          <div className="border p-3">
-            <h1>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)} #{pokemon.id}</h1>
-            <p>
+          <div className="border p-3 m-3">
+            <h1 className="text-center">{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)} #{pokemon.id}</h1>
+            <div className="flex justify-between">
+              <p className="">
+                Height: {pokemon.height}
+              </p>
+              <p>
+                Weight: {pokemon.weight}
+              </p>
+            </div>
+            <p className="">
               Types: {pokemon.types.map((type, index) => (
-                <span key={index}>{type.type.name.charAt(0).toUpperCase() + type.type.name.slice(1)}{index < pokemon.types.length - 1 ? ',' : ""}</span>
+                <span key={index}>{type.type.name.charAt(0).toUpperCase() + type.type.name.slice(1)}{index < pokemon.types.length - 1 ? ', ' : " "}</span>
               ))}
             </p>
-            <p>
-            Stats: {pokemon.stats.map((stat, index) => (
-                <span key={index}>{stat.stat.name} {stat.base_stat}</span>
+            <p className="">
+              Stats: {pokemon.stats.map((stat, index) => (
+                <span className="flex" key={index}>{stat.stat.name}: {stat.base_stat}</span>
               ))}
-            </p>
-            <p>
-              Height: {pokemon.height}
-              Weight: {pokemon.weight}
             </p>
           </div>
         </div>
