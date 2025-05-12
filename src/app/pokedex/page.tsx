@@ -3,14 +3,13 @@
 import { getPokemonList, getPokemonDetails, PokemonDetails } from "../../../services/pokemon"
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 export default function PokemonPage() {
     const [pokemonList, setPokemonList] = useState<PokemonDetails[]>([]);
     const [loading, setLoading] = useState(false);
     const [offset, setOffset] = useState(0);
     const [hasMore, setHasMore] = useState(true);
-    const observer = useRef<IntersectionObserver | null>(null);
 
     //Function to load more Pokemon
     const loadMorePokemon = useCallback(async () => {
@@ -32,24 +31,11 @@ export default function PokemonPage() {
         }
     }, [offset, loading]);
 
-    // Intersection Observer Setup
-    const lastPokemonElementRef = useCallback((node: HTMLLIElement) => {
-        if (loading) return;
-        if (observer.current) observer.current.disconnect()
-
-        observer.current = new IntersectionObserver(entries => {
-            if (entries[0].isIntersecting && hasMore) {
-                loadMorePokemon();
-            }
-        });
-
-        if (node) observer.current.observe(node);
-    }, [loading, hasMore, loadMorePokemon]);
-
     //Initial Load
     useEffect(() => {
         loadMorePokemon();
-    }, [loadMorePokemon])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     return (
         <div className=" justify-items-center items-center">
@@ -63,11 +49,10 @@ export default function PokemonPage() {
 
             <div className="">
                 <h1 className="flex justify-center">Pokedex</h1>
-                <ul className="grid lg:grid-cols-5 gap-4 grid-cols-2">
+                <ul className="grid lg:grid-cols-5 gap-4 grid-cols-1">
                     {pokemonList.map((pokemon, index) => (
                         <li
                             key={`${pokemon.id}-${index}`}
-                            ref={index === pokemonList.length - 1 ? lastPokemonElementRef : null}
                             className="p-4 border rounded-lg shadow hover:shadow-lg transition-shadow"
                         >
                             <Link href={`/pokedex/${pokemon.name}`}>
@@ -90,7 +75,7 @@ export default function PokemonPage() {
                                             #{pokemon.id} - {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
                                         </p>
                                         <div className="flex gap-2 mt-1">
-                                            {pokemon.types.map((type: any) => (
+                                            {pokemon.types.map((type) => (
                                                 <span
                                                     key={type.type.name}
                                                     className="px-2 py-1 text-xs rounded-full bg-gray-200"
@@ -105,6 +90,15 @@ export default function PokemonPage() {
                         </li>
                     ))}
                 </ul>
+                <div className="flex justify-center mt-4">
+                    <button
+                        onClick={loadMorePokemon}
+                        disabled={loading || !hasMore}
+                        className="px-4 py-2 bg-blue-500 text-white rounded disabled:bg-gray-400"
+                    >
+                        {loading ? 'Loading...' : hasMore ? 'Load More' : 'No More Pokémon'}
+                    </button>
+                </div>
             </div>
         </div>
     )
