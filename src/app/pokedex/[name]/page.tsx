@@ -1,6 +1,7 @@
 'use client'
 
 import { getPokemonDetails, PokemonDetails } from "../../../../services/pokemon"
+import PokemonEvolutions from "../../components/EvolutionPage"
 import Link from "next/link"
 import Image from "next/image"
 import { useEffect, useState } from "react"
@@ -12,7 +13,7 @@ export default function Pokemon() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
-  useEffect(() => {
+  useEffect(() => { 
     const fetchPokemon = async () => {
       try {
         const data = await getPokemonDetails(params.name as string);
@@ -98,6 +99,8 @@ export default function Pokemon() {
               ))}
             </p>
           </div>
+
+          <PokemonEvolutions />
         </div>
       </div>
 

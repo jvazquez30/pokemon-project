@@ -34,6 +34,29 @@ export interface PokemonDetails {
     }[];
 }
 
+export interface PokemonEvolution {
+    id: number;
+    chain: {
+        species: {
+            name: string
+        },
+        evolves_to: {
+            species: {
+                name: string
+            },
+            evolution_details: {
+                trigger: string
+            },
+            evolves_to: {
+                species: {
+                    name: string
+                }
+            }[],
+        }[],
+    },
+
+}
+
 export async function getPokemonList(limit: number = 20, offset: number = 0): Promise<PokemonListResponse> {
     const response = await fetch(
         `${POKEMON_API_URL}/pokemon?offset=${offset}&limit=${limit}`
