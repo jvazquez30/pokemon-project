@@ -4,7 +4,7 @@ import React from "react";
 export default function WelcomePage() {
     return (
         <div className="flex flex-col items-center justify-center gap-4">
-            <div>
+            <div className="text-center">
                 <h1>Welcome to the PokeTrainer</h1>
                 <p>This is a beginner friendly site to help you learn about Pokemon</p>
             </div>

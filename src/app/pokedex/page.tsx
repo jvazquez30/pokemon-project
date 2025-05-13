@@ -42,10 +42,14 @@ export default function PokemonPage() {
             <header className="flex justify-center items-center w-full bg-red-600">
                 <Image src="/pokeTrainer.png" alt="Pokemon" width={300} height={300} />
             </header>
-
-            <Link href={'/'} className="underline hover:to-blue-600">
+            <div className="flex justify-between">
+            <Link href={'/'} className="underline hover:text-blue-600 p-1">
                 Go Home
             </Link>
+            <Link href={'/search'} className="underline hover:text-blue-600 p-1">
+                Search
+            </Link>
+            </div>
 
             <div className="">
                 <h1 className="flex justify-center">Pokedex</h1>
