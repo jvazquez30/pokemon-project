@@ -57,6 +57,14 @@ export interface PokemonEvolution {
 
 }
 
+export interface PokemonSpecies {
+    id: number;
+    name: string;
+    evolution_chain: {
+        url: string
+    }
+}
+
 export async function getPokemonList(limit: number = 20, offset: number = 0): Promise<PokemonListResponse> {
     const response = await fetch(
         `${POKEMON_API_URL}/pokemon?offset=${offset}&limit=${limit}`
@@ -87,7 +95,7 @@ export async function getPokemonEvolutions(id: number) {
     }
     return speciesResponse.json();
 } 
- export async function getPokemonSpecies(idOrName: number | string) {
+ export async function getPokemonSpecies(idOrName: number | string): Promise<PokemonSpecies> {
     const response = await fetch(`${POKEMON_API_URL}/pokemon-species/${idOrName}`);
 
     if (!response.ok) {
