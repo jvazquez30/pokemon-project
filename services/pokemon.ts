@@ -81,11 +81,9 @@ export async function getPokemonDetails(name: string) {
 }
 
 export async function getPokemonEvolutions(id: number) {
-    const response = await fetch(`${POKEMON_API_URL}/evolution-chain/${id}/`)
-
-    if (!response.ok) {
-        throw new Error(`Failed to retrieve evolution details for id: ${id}`)
+    const speciesResponse = await fetch(`${POKEMON_API_URL}/evolution-chain/${id}`);
+    if (!speciesResponse.ok) {
+        throw new Error(`Failed to retrieve species details for id: ${id}`);
     }
-
-    return response.json();
+    return speciesResponse.json();
 } 

@@ -51,7 +51,6 @@ export default function PokemonEvolutions() {
                         <li key={evo.species.name}>
                             <Link href={`/pokedex/${evo.species.name}`}>
                                 {evo.species.name.charAt(0).toUpperCase() + evo.species.name.slice(1)}
-                                
                             </Link>
                         </li>
                     ))}
