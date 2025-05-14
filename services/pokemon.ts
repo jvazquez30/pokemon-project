@@ -87,3 +87,12 @@ export async function getPokemonEvolutions(id: number) {
     }
     return speciesResponse.json();
 } 
+ export async function getPokemonSpecies(idOrName: number | string) {
+    const response = await fetch(`${POKEMON_API_URL}/pokemon-species/${idOrName}`);
+
+    if (!response.ok) {
+        throw new Error(`Failed to retrieve species details for; ${idOrName}`)
+    }
+
+    return response.json();
+ }
