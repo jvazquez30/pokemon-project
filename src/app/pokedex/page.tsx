@@ -3,13 +3,14 @@
 import { getPokemonList, getPokemonDetails, PokemonDetails } from "../../../services/pokemon"
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 
 export default function PokemonPage() {
     const [pokemonList, setPokemonList] = useState<PokemonDetails[]>([]);
     const [loading, setLoading] = useState(false);
     const [offset, setOffset] = useState(0);
     const [hasMore, setHasMore] = useState(true);
+    const initialLoadDone = useRef(false);
 
     //Function to load more Pokemon
     const loadMorePokemon = useCallback(async () => {
@@ -22,7 +23,7 @@ export default function PokemonPage() {
             );
 
             setPokemonList(prevList => [...prevList, ...newDetails]);
-            setOffset(prevOffset => prevOffset + 20); // <--- increments by 20 
+            setOffset(prevOffset => prevOffset + 20);
             setHasMore(newPokemon.next !== null);
         } catch (error) {
             console.error("Error loading more Pokemon", error);
@@ -33,9 +34,15 @@ export default function PokemonPage() {
 
     //Initial Load
     useEffect(() => {
-        loadMorePokemon();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+        if (!initialLoadDone.current) {
+            initialLoadDone.current = true;
+            setPokemonList([]);
+            setOffset(0);
+            setHasMore(true);
+            loadMorePokemon();
+        }
+            // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     return (
         <div className=" justify-items-center items-center">
@@ -43,12 +50,12 @@ export default function PokemonPage() {
                 <Image src="/pokeTrainer.png" alt="Pokemon" width={300} height={300} />
             </header>
             <div className="flex justify-between">
-            <Link href={'/'} className="underline hover:text-blue-600 p-1">
-                Go Home
-            </Link>
-            <Link href={'/search'} className="underline hover:text-blue-600 p-1">
-                Search
-            </Link>
+                <Link href={'/'} className="underline hover:text-blue-600 p-1">
+                    Go Home
+                </Link>
+                <Link href={'/search'} className="underline hover:text-blue-600 p-1">
+                    Search
+                </Link>
             </div>
 
             <div className="">
