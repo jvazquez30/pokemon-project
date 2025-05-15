@@ -18,6 +18,7 @@ export default function PokemonEvolutions() {
     const [pokemon, setPokemon] = useState<PokemonDetails | null>(null)
     const [species, setSpecies] = useState<PokemonSpecies | null>(null)
     const [evolutionChain, setEvolutionChain] = useState<EvolutionChain | null>(null)
+    const [evolutionDetails, setEvolutionDetails] = useState<{ [key: string]: PokemonDetails }>({})
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState<string | null>(null)
 
@@ -33,7 +34,7 @@ export default function PokemonEvolutions() {
                 setSpecies(speciesData);
 
                 // Extract the evolution chain ID from the URL
-                const evolutionChainId = speciesData.evolution_chain.url.split('/').slice(-2, -1)[0];
+                // const evolutionChainId = speciesData.evolution_chain.url.split('/').slice(-2, -1)[0];
                 
                 // Fetch the evolution chain data
                 const evolutionResponse = await fetch(speciesData.evolution_chain.url);
@@ -42,6 +43,20 @@ export default function PokemonEvolutions() {
                 }
                 const evolutionData = await evolutionResponse.json();
                 setEvolutionChain(evolutionData.chain);
+
+                const fetchEvolutionDetails = async (chain: EvolutionChain) => {
+                    const details = await getPokemonDetails(chain.species.name)
+                    setEvolutionDetails(prev => ({
+                        ...prev,
+                        [chain.species.name]: details
+                    }));
+
+                    for (const evolution of chain.evolves_to) {
+                        await fetchEvolutionDetails(evolution)
+                    }
+                };
+
+                await fetchEvolutionDetails(evolutionData.chain)
             } catch (error) {
                 console.error("Failed to retrieve data:", error);
                 setError("Failed to load evolution data");
@@ -54,6 +69,8 @@ export default function PokemonEvolutions() {
     }, [params.name]);
 
     const renderEvolutionChain = (chain: EvolutionChain) => {
+        const pokemonDetails = evolutionDetails[chain.species.name];
+        
         return (
             <div key={chain.species.name} className="flex items-center">
                 <Link 
@@ -63,6 +80,17 @@ export default function PokemonEvolutions() {
                     <div className="text-center">
                         <p className="font-semibold capitalize">
                             {chain.species.name}
+                        </p>
+                        <p>
+                            {pokemonDetails && (
+                                <Image 
+                                src={pokemonDetails.sprites.front_default}
+                                alt={chain.species.name}
+                                width={100}
+                                height={100}
+                                className="mx-auto"
+                                />
+                            )}
                         </p>
                     </div>
                 </Link>
@@ -92,9 +120,8 @@ export default function PokemonEvolutions() {
 
     return (
         <div>
-            
-            <div>
-                <h3>Evolutions:</h3>
+            <div className="flex justify-between flex-col">
+                <h3 className="text-center">Evolutions:</h3>
                 <ul>
                 {renderEvolutionChain(evolutionChain)}
                 </ul>
