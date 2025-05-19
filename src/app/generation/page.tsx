@@ -1,3 +1,5 @@
+'use client'
+
 import { getGenerations, GenerationInfo, } from "../../../services/information";
 import { useEffect, useState } from "react";
 import Image from "next/image";
@@ -10,14 +12,17 @@ export default function Generation() {
     useEffect(() => {
         const fetchGeneration = async () => {
             try {
-                const data = await getGenerations()
+                const data = await getGenerations(1)
+                setGeneration(data)
             } catch (error) {
-
+                console.error("Failed to retrieve Gen information", error)
+                setError("Gen info not avail")
             } finally {
                 setloading(false)
             }
         }
-    })
+        fetchGeneration()
+    }, [])
 
     return (
         <div>
@@ -26,7 +31,8 @@ export default function Generation() {
             </header>
 
             <div>
-                Generations Info
+                <h1>Generation ID: {generation?.id}</h1>
+                {generation?.names.name}
             </div>
 
 
