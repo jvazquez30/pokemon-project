@@ -31,8 +31,8 @@ export default function Generation() {
             </header>
 
             <div>
-                <h1>Generation ID: {generation?.id}</h1>
-                {generation?.names.name}
+                <h1>Generation {generation?.id}</h1>
+                <p>Region: {generation?.main_region.name}</p>
             </div>
 
 
