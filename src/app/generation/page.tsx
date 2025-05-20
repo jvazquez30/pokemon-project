@@ -35,7 +35,9 @@ export default function Generation() {
                 <p>Region: {generation?.main_region.name}</p>
             </div>
 
-
+            <div>
+                
+            </div>
         </div>
     )
 }
