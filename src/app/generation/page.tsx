@@ -45,10 +45,14 @@ export default function Generation() {
                 <Image src="/pokeTrainer.png" alt="Pokemon" width={300} height={300} />
             </header>
 
-            <div>
-              <ul>
+            <div className="flex flex-col text-center p-3">
+                <h1>
+                A generation is a grouping of the Pokémon games that separates them based on the Pokémon they include.
+                In each generation, a new set of Pokémon, Moves, Abilities and Types that did not exist in the previous generation are released.
+                </h1>
+              <ul className="">
                 {GenerationList.map((generation, index) => (
-                    <li key={index}>{generation.name}</li>
+                    <li key={index} className="border rounded-lg p-5 m-3">{generation.name}</li>
                 ))}
               </ul>
             </div>
