@@ -46,10 +46,11 @@ export default function Generation() {
             </header>
 
             <div className="flex flex-col text-center p-3">
-                <h1>
+                <h1>What is a generation?</h1>
+                <p>
                 A generation is a grouping of the Pokémon games that separates them based on the Pokémon they include.
                 In each generation, a new set of Pokémon, Moves, Abilities and Types that did not exist in the previous generation are released.
-                </h1>
+                </p>
               <ul className="">
                 {GenerationList.map((generation, index) => (
                     <li key={index} className="border rounded-lg p-5 m-3">{generation.name}</li>
