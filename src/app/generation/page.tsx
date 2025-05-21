@@ -4,6 +4,21 @@ import { getGenerations, GenerationInfo, } from "../../../services/information";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
+const GenerationList = [
+    { name: "Generation I"},
+    { name: "Generation II"},
+    { name: "Generation III"},
+    { name: "Generation IV"},
+    { name: "Generation V"},
+    { name: "Generation VI"},
+    { name: "Generation VII"},
+    { name: "Generation VIII"},
+    { name: "Generation IX"},
+]
+
+
+
+
 export default function Generation() {
     const [generation, setGeneration] = useState<GenerationInfo | null>(null)
     const [loading, setloading] = useState(true)
@@ -12,7 +27,7 @@ export default function Generation() {
     useEffect(() => {
         const fetchGeneration = async () => {
             try {
-                const data = await getGenerations(1)
+                const data = await getGenerations(9)
                 setGeneration(data)
             } catch (error) {
                 console.error("Failed to retrieve Gen information", error)
@@ -31,8 +46,11 @@ export default function Generation() {
             </header>
 
             <div>
-                <h1>Generation {generation?.id}</h1>
-                <p>Region: {generation?.main_region.name}</p>
+              <ul>
+                {GenerationList.map((generation, index) => (
+                    <li key={index}>{generation.name}</li>
+                ))}
+              </ul>
             </div>
 
             <div>
