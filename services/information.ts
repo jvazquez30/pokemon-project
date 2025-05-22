@@ -9,6 +9,10 @@ export interface GenerationInfo {
     names: {
         name: string
     }[],
+    pokemon_species: {
+        name: string
+    }[],
+    
 }
 
 
