@@ -2,7 +2,6 @@ const POKEMON_API_URL = 'https://pokeapi.co/api/v2';
 
 export interface GenerationInfo {
     id: number
-    name: string
     main_region: {
         name: string
     },
@@ -12,7 +11,7 @@ export interface GenerationInfo {
     pokemon_species: {
         name: string
     }[],
-    
+
 }
 
 

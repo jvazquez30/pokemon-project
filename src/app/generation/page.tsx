@@ -3,6 +3,7 @@
 import { getGenerations, GenerationInfo, } from "../../../services/information";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const GenerationList = [
     { name: "Generation I"},
@@ -53,7 +54,13 @@ export default function Generation() {
                 </p>
               <ul className="">
                 {GenerationList.map((generation, index) => (
-                    <li key={index} className="border rounded-lg p-5 m-3">{generation.name}</li>
+                    
+                    <li key={index} className="border rounded-lg p-5 m-3">
+                        <Link href={`generation/${index + 1}`}>
+                        {generation.name}
+                        </Link>
+                        
+                    </li>
                 ))}
               </ul>
             </div>
