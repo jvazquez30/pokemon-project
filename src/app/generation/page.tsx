@@ -18,8 +18,6 @@ const GenerationList = [
 ]
 
 
-
-
 export default function Generation() {
     const [generation, setGeneration] = useState<GenerationInfo | null>(null)
     const [loading, setloading] = useState(true)
