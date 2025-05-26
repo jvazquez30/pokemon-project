@@ -12,6 +12,7 @@ export default function WelcomePage() {
                 <div className="flex gap-2">
                     <Link href="/search" className="bg-blue-500 text-white p-2 rounded-md">Search For Pokemon</Link>
                     <Link href="/pokedex" className="bg-red-500 text-white p-2 rounded-md">Pokedex</Link>
+                    <Link href="/generation" className="bg-blue-500 text-white p-2 rounded-md">Generation</Link>
                 </div>
             </div>
         </div>
