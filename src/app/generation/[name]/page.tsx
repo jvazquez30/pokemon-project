@@ -8,5 +8,7 @@ export default function GenerationPage() {
     Hello, this is generation
 
     This generation concludes.....
+    this will def need to user params
+    
     </div>
 }
