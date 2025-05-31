@@ -1,3 +1,4 @@
+import { useParams } from "next/navigation"
 
 
 // this will show the generation information
