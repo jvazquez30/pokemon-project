@@ -10,6 +10,6 @@ export default function GenerationPage() {
 
     This generation concludes.....
     this will def need to user params
-    
+    I am back now
     </div>
 }
