@@ -5,6 +5,8 @@ import { useParams } from "next/navigation"
 
 export default function GenerationPage() {
     <div>
-
+        Adding Generation info:
+            Cities:
+            Country:
     </div>
 }
