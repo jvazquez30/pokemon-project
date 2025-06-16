@@ -1,3 +1,5 @@
+'use client '
+
 import { useParams } from "next/navigation"
 import { useState } from "react"
 
@@ -7,12 +9,13 @@ import { useState } from "react"
 export default function GenerationPage() {
     const params = useParams()
     const [info, setinfo] = useState()
-return (
-    <div>
-        Adding Generation info:
+
+    return (
+        <div>
+            Adding Generation info:
             Cities:
             Country:
-    </div>
+        </div>
 
-)
+    )
 }
