@@ -5,7 +5,7 @@ export default function WelcomePage() {
     return (
         <div className="flex flex-col items-center justify-center gap-4">
             <div className="text-center">
-                <h1>Welcome to the PokeTrainer</h1>
+                <h1 className="font-bold text-4xl ">Welcome to the PokeTrainer</h1>
                 <p>This is a beginner friendly site to help you learn about Pokemon</p>
             </div>
             <div className="flex flex-col items-center justify-center ">
@@ -13,7 +13,6 @@ export default function WelcomePage() {
                     <Link href="/search" className="bg-blue-500 text-white p-2 rounded-md">Search For Pokemon</Link>
                     <Link href="/pokedex" className="bg-red-500 text-white p-2 rounded-md">Pokedex</Link>
                     <Link href="/generation" className="bg-blue-500 text-white p-2 rounded-md">Generation</Link>
-                    <Link></Link>
                 </div>
             </div>
         </div>
