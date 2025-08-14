@@ -42,6 +42,7 @@ export default function Generation() {
         <div>
             <header className="flex justify-center items-center w-full bg-red-600">
                 <Image src="/pokeTrainer.png" alt="Pokemon" width={300} height={300} />
+                <Link href={'/'}>Home</Link>
             </header>
 
             <div className="flex flex-col text-center p-3">
