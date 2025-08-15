@@ -14,6 +14,11 @@ export interface GenerationInfo {
 
 }
 
+export interface TypeInfo {
+    id: number,
+    name: string
+    
+}
 
 export async function getGenerations(IdorName: number | string) {
     const response = await fetch(`${POKEMON_API_URL}/generation/${IdorName}/`)
