@@ -11,13 +11,17 @@ export interface GenerationInfo {
     pokemon_species: {
         name: string
     }[],
+    version_groups: {
+        name: string
+    }
 
 }
 
 export interface TypeInfo {
     id: number,
-    name: string
-    
+    name: string,
+
+
 }
 
 export async function getGenerations(IdorName: number | string) {

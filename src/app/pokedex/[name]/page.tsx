@@ -31,7 +31,7 @@ export default function Pokemon() {
   if (loading) {
     return (
       <div>
-        <div> </div>
+        <div>Loading....</div>
       </div>
     )
   }
