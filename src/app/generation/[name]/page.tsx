@@ -6,7 +6,7 @@ import { GenerationInfo, getGenerations } from "../../../../services/information
 import Image from "next/image"
 import Link from "next/link"
 
-// this will show the generation information
+// this will show the generation name
 
 export default function GenerationPage() {
     const params = useParams()
@@ -45,8 +45,11 @@ export default function GenerationPage() {
     return (
         <div>
             <header className="flex justify-center items-center w-full bg-red-600">
+                <Link href={`/generation`} className="underline pl-1 pt-1">
+                    Go Back
+                </Link>
                 <Image src="/pokeTrainer.png" alt="Pokemon" width={300} height={300} />
-                <Link href={'/'}>Home</Link>
+                <Link href={'/'} className="underline">Home</Link>
             </header>
 
             <div id="generationInfo">
@@ -56,7 +59,7 @@ export default function GenerationPage() {
                     )} Region
                 </h1>
                 <div>
-                    
+
                 </div>
 
             </div>
