@@ -33,3 +33,13 @@ export async function getGenerations(IdorName: number | string) {
 
     return response.json()
 }
+
+export async function getTypes(id: number) {
+    const response = await fetch(`${POKEMON_API_URL}/type/${id}/`)
+
+    if (!response.ok) {
+        throw new Error(`Failed to retrieve type ${id}`)
+    }
+
+    return response.json()
+}
