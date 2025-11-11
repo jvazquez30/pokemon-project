@@ -17,14 +17,14 @@ export interface GenerationInfo {
 
 }
 
-export interface TypeList {
+export interface TypesList {
     count: number
     results: {
         name: string
     }[]
 }
 
-export interface TypeInfo {
+export interface TypeInformation {
     id: number,
 
     
@@ -42,7 +42,7 @@ export async function getGenerations(IdorName: number | string) {
     return response.json()
 }
 
-export async function getTypesList() : Promise<TypeList>  {
+export async function getTypesList() : Promise<TypesList>  {
     const response = await fetch(`${POKEMON_API_URL}/type/`)
 
     if (!response.ok) {
