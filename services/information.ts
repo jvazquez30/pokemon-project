@@ -17,9 +17,17 @@ export interface GenerationInfo {
 
 }
 
+export interface TypeList {
+    count: number
+    results: {
+        name: string
+    }[]
+}
+
 export interface TypeInfo {
     id: number,
-    name: string,
+
+    
 
 
 }
@@ -33,6 +41,17 @@ export async function getGenerations(IdorName: number | string) {
 
     return response.json()
 }
+
+export async function getTypesList() : Promise<TypeList>  {
+    const response = await fetch(`${POKEMON_API_URL}/type/`)
+
+    if (!response.ok) {
+        throw new Error(`Failed to retrieve types`)
+    }
+
+    return response.json()
+}
+
 
 export async function getTypes(id: number) {
     const response = await fetch(`${POKEMON_API_URL}/type/${id}/`)

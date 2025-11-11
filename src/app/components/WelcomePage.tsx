@@ -13,6 +13,7 @@ export default function WelcomePage() {
                     <Link href="/search" className="bg-blue-500 text-white p-2 rounded-md">Search For Pokemon</Link>
                     <Link href="/pokedex" className="bg-red-500 text-white p-2 rounded-md">Pokedex</Link>
                     <Link href="/generation" className="bg-blue-500 text-white p-2 rounded-md">Generation</Link>
+                    <Link href="types" className="bg-blue-500 text-white p-2 rounded-md">Types</Link>
                 </div>
             </div>
         </div>
