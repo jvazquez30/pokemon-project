@@ -18,14 +18,15 @@ export default function TypeList() {
     fetchTypes()
   }, [])
 
-
   return (
-    <div>
-      <h1>Different types of pokemon</h1>
+    <div className="flex">
+      <h1 className="">Different types of pokemon</h1>
       {types ? (
-        <ul>
+        <ul className="">
           {types.results.map((type) => (
-            <li key={type.name}>{type.name}</li>
+            <li key={type.name} className={`type-${type.name} border rounded-md  ` }>
+              {type.name}
+            </li>
           ))}
         </ul>
       ) : (
