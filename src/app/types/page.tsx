@@ -1,6 +1,5 @@
 'use client'
 
-import { TypeInfo } from "../../../services/information";
 import TypeList from "../components/TypeList";
 import Link from "next/link";
 import Image from "next/image";
