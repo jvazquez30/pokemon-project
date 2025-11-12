@@ -19,74 +19,74 @@ body {
 }
 
 .type-fire {
-  color: #ff4500;
+  background-color: #ff4500;
   
 }
 
 .type-water {
-  color: #1e90ff;
+  background-color: #1e90ff;
 }
 
 .type-grass {
-  color: #32cd32;
+  background-color: #32cd32;
 }
 
 .type-electric {
-  color: #ffd700;
+  background-color: #ffd700;
 }
 
 .type-psychic {
-  color: #ff1493;
+  background-color: #ff1493;
 }
 
 .type-ice {
-  color: #00ffff;
+  background-color: #00ffff;
 }
 
 .type-dragon {
-  color: #8b00ff;
+  background-color: #8b00ff;
 }
 
 .type-dark {
-  color: #4a4a4a;
+  background-color: #4a4a4a;
 }
 
 .type-fairy {
-  color: #ffb6c1;
+  background-color: #ffb6c1;
 }
 
 .type-normal {
-  color: #a8a878;
+  background-color: #a8a878;
 }
 
 .type-fighting {
-  color: #c03028;
+  background-color: #c03028;
 }
 
 .type-flying {
-  color: #a890f0;
+  background-color: #a890f0;
 }
 
 .type-poison {
-  color: #a040a0;
+  background-color: #a040a0;
 }
 
 .type-ground {
-  color: #e0c068;
+  background-color: #e0c068;
 }
 
 .type-rock {
-  color: #b8a038;
+  background-color: #b8a038;
 }
 
 .type-bug {
-  color: #a8b820;
+  background-color: #a8b820;
 }
 
 .type-ghost {
-  color: #705898;
+  background-color: #705898;
 }
 
 .type-steel {
-  color: #b8b8d0;
+  background-color: #b8b8d0;
 }

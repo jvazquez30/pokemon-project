@@ -19,12 +19,14 @@ export default function TypeList() {
   }, [])
 
   return (
-    <div className="flex">
+    <div className="flex justify-center">
+
+      <div className="justify-around">
       <h1 className="">Different types of pokemon</h1>
       {types ? (
-        <ul className="">
+        <ul className="grid grid-cols-2 ">
           {types.results.map((type) => (
-            <li key={type.name} className={`type-${type.name} border rounded-md  ` }>
+            <li key={type.name} className={`type-${type.name} border rounded-md m-1.5 text-center` }>
               {type.name}
             </li>
           ))}
@@ -32,6 +34,8 @@ export default function TypeList() {
       ) : (
         <p>Loading types...</p>
       )}
+
+      </div>
       
     </div>
   )
