@@ -25,7 +25,7 @@ export default function TypeList() {
         {types ? (
           <ul className="grid grid-cols-2 ">
             {types.results.map((type) => (
-              <li key={type.name} className={`type-${type.name} border rounded-md m-1.5 text-center`}>
+              <li key={type.name} className={`type-${type.name} border border-gray-500 rounded-md m-1.75 text-center text-sm font-semibold text-shadow-lg`}>
                 {type.name.charAt(0).toUpperCase() + type.name.slice(1)}
               </li>
             ))}
