@@ -1,5 +1,9 @@
 const POKEMON_API_URL = 'https://pokeapi.co/api/v2';
 
+interface NamedResource {
+    name: string
+}
+
 export interface GenerationInfo {
     id: number
     main_region: {
@@ -25,11 +29,19 @@ export interface TypesList {
 }
 
 export interface TypeInformation {
-    id: number,
-
+    damage_relations: {
+        double_damage_from: NamedResource[];
+        double_damage_to: NamedResource[];
+        half_damage_from: NamedResource[];
+        half_damage_to: NamedResource[];
+        no_damage_from: NamedResource[];
+        no_damage_to: NamedResource[];
+    }
+    move_damage_class: {
+        name: string
+    };
+    name: string
     
-
-
 }
 
 export async function getGenerations(IdorName: number | string) {
@@ -42,7 +54,7 @@ export async function getGenerations(IdorName: number | string) {
     return response.json()
 }
 
-export async function getTypesList() : Promise<TypesList>  {
+export async function getTypesList(): Promise<TypesList> {
     const response = await fetch(`${POKEMON_API_URL}/type/`)
 
     if (!response.ok) {
@@ -58,6 +70,16 @@ export async function getTypes(id: number) {
 
     if (!response.ok) {
         throw new Error(`Failed to retrieve type ${id}`)
+    }
+
+    return response.json()
+}
+
+export async function getTypeInfo(IdorName: number | string) {
+    const response = await fetch(`${POKEMON_API_URL}/type/${IdorName}`)
+
+    if (!response) {
+        throw new Error("Failed to retrieve type")
     }
 
     return response.json()
