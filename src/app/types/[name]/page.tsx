@@ -75,11 +75,47 @@ export default function TypePage() {
           </div>
 
           <div>
-           <div>
-            <h1>Double Damage To</h1>
-            {DoubleDmgTo.map((type, index) => (
-              <p key={index} className={`type-${type.name}`}>{type.name}</p>
-            ))}
+            <div>
+              <h1>Double Damage To</h1>
+              {DoubleDmgTo.map((type, index) => (
+                <p key={index} className={`type-${type.name}`}>{type.name}</p>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <div>
+              <h1>Half Damage From</h1>
+              {HalfDmgFrom.map((type, index) => (
+                <p key={index} className={`type-${type.name}`}>{type.name}</p>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <div>
+              <h1>Half Damage To</h1>
+              {HalfDmgTo.map((type, index) => (
+                <p key={index} className={`type-${type.name}`}>{type.name}</p>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <div>
+              <h1>No Damage From</h1>
+              {NoDmgFrom.map((type, index) => (
+                <p key={index} className={`type-${type.name}`}>{type.name}</p>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <div>
+              <h1>No Damage To</h1>
+              {NoDmgTo.map((type, index) => (
+                <p key={index} className={`type-${type.name}`}>{type.name}</p>
+              ))}
             </div>
           </div>
         </div>
