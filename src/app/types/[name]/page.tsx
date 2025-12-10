@@ -56,7 +56,7 @@ export default function TypePage() {
     <div className="items-center">
       <header className="flex justify-center items-center w-full bg-red-600">
         <Image src="/pokeTrainer.png" alt="Pokemon" width={300} height={300} className="m-auto h-auto" />
-        <Link href={`/pokedex`} className="underline pl-1 pt-1">
+        <Link href={`/types`} className="underline pl-1 pt-1">
           Go Back
         </Link>
       </header>
