@@ -44,7 +44,6 @@ export default function TypePage() {
 
 
   const TypeName = type.name;
-  const DamageType = type.move_damage_class.name;
   const DoubleDmgFrom = type.damage_relations.double_damage_from;
   const DoubleDmgTo = type.damage_relations.double_damage_to;
   const HalfDmgFrom = type.damage_relations.half_damage_from;
