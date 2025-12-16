@@ -1,5 +1,10 @@
 const POKEMON_API_URL = 'https://pokeapi.co/api/v2';
 
+interface Pokemon {
+    name: string
+    url: string
+}
+
 interface NamedResource {
     name: string
 }
@@ -40,7 +45,8 @@ export interface TypeInformation {
     move_damage_class: {
         name: string
     };
-    name: string
+    name: string;
+    pokemon: 
     
 }
 
