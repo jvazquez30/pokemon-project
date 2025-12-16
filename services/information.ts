@@ -1,8 +1,10 @@
 const POKEMON_API_URL = 'https://pokeapi.co/api/v2';
 
 interface Pokemon {
-    name: string
-    url: string
+    pokemon: {
+        name: string
+        url: string
+    }
 }
 
 interface NamedResource {
@@ -46,7 +48,7 @@ export interface TypeInformation {
         name: string
     };
     name: string;
-    pokemon: 
+    pokemon: Pokemon[]
     
 }
 
@@ -84,7 +86,7 @@ export async function getTypes(id: number) {
 export async function getTypeInfo(IdorName: number | string) {
     const response = await fetch(`${POKEMON_API_URL}/type/${IdorName}`)
 
-    if (!response) {
+    if (!response.ok) {
         throw new Error("Failed to retrieve type")
     }
 

@@ -1,5 +1,6 @@
 "use client"
 import { TypeInformation, getTypeInfo } from "../../../../services/information"
+import PokemonByType from "@/app/components/PokemonsviaType"
 import { useParams } from "next/navigation"
 import { useEffect, useState } from "react"
 import Link from "next/link"
@@ -118,7 +119,25 @@ export default function TypePage() {
             </div>
           </div>
         </div>
+
+
+
+
+
+
+
       </div>
+            <PokemonByType />
+
+
+        {/* <div>
+          <ul>
+            {type.pokemon.map((pokemon, index) => (
+              <li key={index}>{pokemon.pokemon.name}</li>
+            ))}
+          </ul>
+        </div> */}
+
     </div>
   )
 }
