@@ -47,6 +47,9 @@ export interface TypeInformation {
     move_damage_class: {
         name: string
     };
+    moves: {
+        name: string
+    }[]
     name: string;
     pokemon: Pokemon[]
     

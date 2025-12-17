@@ -128,16 +128,6 @@ export default function TypePage() {
 
       </div>
             <PokemonByType />
-
-
-        {/* <div>
-          <ul>
-            {type.pokemon.map((pokemon, index) => (
-              <li key={index}>{pokemon.pokemon.name}</li>
-            ))}
-          </ul>
-        </div> */}
-
     </div>
   )
 }
