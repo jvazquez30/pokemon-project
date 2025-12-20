@@ -20,7 +20,7 @@ export interface MoveList {
 
 
 
-export async function getAllMoves(limit: number = 30, offset: number = 200): Promise<MoveList>  {
+export async function getAllMoves(limit: number = 30, offset: number = 0): Promise<MoveList>  {
   const response = await fetch(`${POKEMON_API_URL}/move?offset=${offset}&limit=${limit}`) 
 
     if (!response.ok) {

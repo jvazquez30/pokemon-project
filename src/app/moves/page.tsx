@@ -23,6 +23,8 @@ export default function MovesPage() {
     fetchMoves()
   }, [])
 
+
+  
   return (
 
     <div>
