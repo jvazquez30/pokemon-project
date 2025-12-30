@@ -33,11 +33,11 @@ export default function MovesPage() {
         <Link href="/">Home</Link>
       </header>
 
-      <div>
-        <h1>
+      <div className="flex justify-center">
+        <h1 className=" grid grid-cols-2">
         {moves ? (
           moves.results.map((move) => (
-            <p key={move.name}>{move.name}</p>
+            <Link key={move.name} href={`/moves/${move.name}`} className="p-2 m-1">{move.name.toUpperCase().charAt(0) + move.name.slice(1)}</Link>
           ))
         ) : (
           <p>Loading Moves...</p>
