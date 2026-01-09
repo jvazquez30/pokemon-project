@@ -2,6 +2,10 @@ const POKEMON_API_URL = 'https://pokeapi.co/api/v2';
 
 
 export interface MoveInformation {
+  accuracy: number;
+  damage_class: {
+    name: string
+  }
   name: string
 }
 
@@ -20,13 +24,23 @@ export interface MoveList {
 
 
 
-export async function getAllMoves(limit: number = 30, offset: number = 0): Promise<MoveList>  {
-  const response = await fetch(`${POKEMON_API_URL}/move?offset=${offset}&limit=${limit}`) 
+export async function getAllMoves(limit: number = 30, offset: number = 0): Promise<MoveList> {
+  const response = await fetch(`${POKEMON_API_URL}/move?offset=${offset}&limit=${limit}`)
 
-    if (!response.ok) {
-      throw new Error("Failed to retrieve moves")
-    }
+  if (!response.ok) {
+    throw new Error("Failed to retrieve moves")
+  }
 
-    return response.json()
-} 
+  return response.json()
+}
+
+export async function getMoveInfo(IdorName: number | string) {
+  const response = await fetch(`${POKEMON_API_URL}/move/${IdorName}`)
+
+  if (!response.ok) {
+    throw new Error("Failed to retrive move information")
+  }
+
+  return response.json()
+}
 
