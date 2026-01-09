@@ -5,8 +5,17 @@ export interface MoveInformation {
   accuracy: number;
   damage_class: {
     name: string
+  };
+  effect_entries: {
+    effect: string
+  }[],
+  name: string;
+  power: number;
+  pp: number;
+  type: {
+    name: string
   }
-  name: string
+
 }
 
 export interface Moves {
