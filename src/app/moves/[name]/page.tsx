@@ -57,9 +57,9 @@ export default function MoveInfo() {
         </Link>
       </header>
 
-      <div className="flex justify-center ">
-        <div className="">
-          <h1>{move?.name.charAt(0).toUpperCase() + move?.name.slice(1)}</h1>
+      <div className="flex-col text-center  ">
+        <div className="m-2">
+          <h1 className="text-3xl">{move?.name.charAt(0).toUpperCase() + move?.name.slice(1)}</h1>
           <ul className="">
             <li>
               Effect: {move.effect_entries[0].effect}
@@ -76,6 +76,15 @@ export default function MoveInfo() {
             Power: {move.power ? move.power : "-"}
             <li>
               PP: {move.pp}
+            </li>
+          </ul>
+        </div>
+
+        <div className="flex-col p-2">
+          <h1 className="text-3xl">Contest Info</h1>
+          <ul>
+            <li>
+              Contest Type: {move.contest_type.name.charAt(0).toUpperCase() + move.contest_type.name.slice(1)}
             </li>
           </ul>
         </div>

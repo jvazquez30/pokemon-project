@@ -3,6 +3,9 @@ const POKEMON_API_URL = 'https://pokeapi.co/api/v2';
 
 export interface MoveInformation {
   accuracy: number;
+  contest_type: {
+    name: string;
+  },
   damage_class: {
     name: string
   };
