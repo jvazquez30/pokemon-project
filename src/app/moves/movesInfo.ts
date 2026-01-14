@@ -12,6 +12,10 @@ export interface MoveInformation {
   effect_entries: {
     effect: string
   }[],
+  learned_by_pokemon: {
+    name: string
+    url: string
+  }[],
   name: string;
   power: number;
   pp: number;

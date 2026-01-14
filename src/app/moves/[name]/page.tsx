@@ -88,6 +88,21 @@ export default function MoveInfo() {
             </li>
           </ul>
         </div>
+
+
+        <div>
+          <h1>Learned By Pokemon:</h1>
+          <ul>
+            {move.learned_by_pokemon.map((pokemon, index) => (
+              <li key={index}>
+                <Link href={`/pokedex/${pokemon.name}`}>
+                {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
+                
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
 
     </div>
