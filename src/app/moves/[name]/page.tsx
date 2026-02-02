@@ -80,21 +80,11 @@ export default function MoveInfo() {
           </ul>
         </div>
 
-        <div className="flex-col p-2">
-          <h1 className="text-3xl">Contest Info</h1>
-          <ul>
-            <li>
-              Contest Type: {move.contest_type.name.charAt(0).toUpperCase() + move.contest_type.name.slice(1)}
-            </li>
-          </ul>
-        </div>
-
-
-        <div>
-          <h1>Learned By Pokemon:</h1>
-          <ul>
+        <div className="">
+          <h1 className="p-1 text-3xl">Learned By Pokemon:</h1>
+          <ul className="grid grid-cols-3">
             {move.learned_by_pokemon.map((pokemon, index) => (
-              <li key={index}>
+              <li key={index} className="col">
                 <Link href={`/pokedex/${pokemon.name}`}>
                 {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
                 
