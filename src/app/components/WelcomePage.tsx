@@ -15,6 +15,7 @@ export default function WelcomePage() {
                     <Link href="/generation" className="bg-blue-500 text-white p-2 rounded-md">Generation</Link>
                     <Link href="/types" className="bg-blue-500 text-white p-2 rounded-md">Types</Link>
                     <Link href='/moves' className="bg-blue-500 text-white p-2 rounded-md">Moves</Link>
+                    <Link href='/items' className="bg-blue-500 text-white p-2 rounded-md">Items</Link>
                 </div>
             </div>
         </div>
