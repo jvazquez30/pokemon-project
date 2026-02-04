@@ -62,7 +62,7 @@ export default function MoveInfo() {
           <h1 className="text-3xl">{move?.name.charAt(0).toUpperCase() + move?.name.slice(1)}</h1>
           <ul className="">
             <li>
-              Effect: {move.effect_entries[0].effect}
+              Effect: {move.effect_entries[1].effect}
             </li>
             <li>
               Type: {move.type.name.charAt(0).toUpperCase() + move.type.name.slice(1)}
