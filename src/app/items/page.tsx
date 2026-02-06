@@ -29,11 +29,11 @@ export default function ItemsPage() {
   return (
     <div>
       <div>
-        <h1>Items</h1>
-        <li>
+        <h1 className="text-center text-5xl p-2">Items</h1>
+        <li className="grid grid-cols-4 p-1">
           {items ? (
             items.results.map((item) => (
-              <Link key={item.name} href={`/items/${item.name}`}>{item.name}</Link>
+              <Link key={item.name} href={`/items/${item.name}`}>{item.name.charAt(0).toUpperCase() + item.name.slice(1)}</Link>
             ))
           ) : (
             <p>Loading Items.....</p>
