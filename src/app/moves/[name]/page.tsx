@@ -1,12 +1,10 @@
 'use client'
-import React from "react";
+
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { MoveInformation, getMoveInfo } from "../movesInfo";
 import Link from "next/link";
 import Image from "next/image";
-
-
 
 
 export default function MoveInfo() {
