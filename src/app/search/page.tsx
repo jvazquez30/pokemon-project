@@ -1,24 +1,30 @@
 'use client';
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { getPokemonDetails, PokemonDetails } from "../../../services/pokemon";
 import Image from "next/image";
 import Link from "next/link";
 
-const fetchAllPokemon = async (): Promise<string[]> => {
+type PokemonSuggestion = { name: string; id: number };
+
+const fetchAllPokemon = async (): Promise<PokemonSuggestion[]> => {
     const res = await fetch('https://pokeapi.co/api/v2/pokemon?limit=1000');
     const data = await res.json();
-    return data.results.map((pokemon: { name: string }) => pokemon.name);
+    return data.results.map((pokemon: { name: string; url: string }) => {
+        const id = parseInt(pokemon.url.split('/').filter(Boolean).pop() ?? '0');
+        return { name: pokemon.name, id };
+    });
 }
 
 export default function SearchPage() {
     const [pokemon, setPokemon] = useState<PokemonDetails | null>(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
-    const [allPokemon, setAllPokemon] = useState<string[]>([]);
-    const [suggestions, setSuggestions] = useState<string[]>([]);
+    const [allPokemon, setAllPokemon] = useState<PokemonSuggestion[]>([]);
+    const [suggestions, setSuggestions] = useState<PokemonSuggestion[]>([]);
     const [searchTerm, setSearchTerm] = useState('');
+    const justSelected = useRef(false);
     const searchParams = useSearchParams();
     const router = useRouter();
 
@@ -37,9 +43,13 @@ export default function SearchPage() {
     }, [searchParams]);
 
     useEffect(() => {
+        if (justSelected.current) {
+            justSelected.current = false;
+            return;
+        }
         if (searchTerm.length > 0) {
-            const filteredPokemon = allPokemon.filter(name =>
-                name.toLowerCase().includes(searchTerm.toLowerCase()));
+            const filteredPokemon = allPokemon.filter(p =>
+                p.name.toLowerCase().includes(searchTerm.toLowerCase()));
             setSuggestions(filteredPokemon);
         } else {
             setSuggestions([]);
@@ -63,6 +73,7 @@ export default function SearchPage() {
     }
 
     const handleSuggestionClick = (name: string) => {
+        justSelected.current = true;
         setSearchTerm(name);
         setSuggestions([]);
         router.push(`/search?q=${encodeURIComponent(name)}`);
@@ -96,13 +107,20 @@ export default function SearchPage() {
                                 />
                                 {suggestions.length > 0 && (
                                     <ul className="absolute top-12 left-0 w-full bg-white border border-gray-300 rounded-md shadow-lg z-10 max-h-60 overflow-y-auto">
-                                        {suggestions.map(name => (
+                                        {suggestions.map(p => (
                                             <li
-                                                key={name}
-                                                className="p-2 hover:bg-gray-100 cursor-pointer"
-                                                onClick={() => handleSuggestionClick(name)}
+                                                key={p.name}
+                                                className="p-2 hover:bg-gray-100 cursor-pointer flex items-center gap-2"
+                                                onClick={() => handleSuggestionClick(p.name)}
                                             >
-                                                {name.charAt(0).toUpperCase() + name.slice(1)}
+                                                <Image
+                                                    src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${p.id}.png`}
+                                                    alt={p.name}
+                                                    width={32}
+                                                    height={32}
+                                                    className="w-8 h-8 object-contain"
+                                                />
+                                                {p.name.charAt(0).toUpperCase() + p.name.slice(1)}
                                             </li>
                                         ))}
                                     </ul>

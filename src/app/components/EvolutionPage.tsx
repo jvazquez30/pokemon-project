@@ -1,4 +1,3 @@
-
 import { useParams } from "next/navigation";
 import { getPokemonSpecies, getPokemonDetails, PokemonSpecies, PokemonDetails } from "../../../services/pokemon";
 import { useState, useEffect } from "react";
