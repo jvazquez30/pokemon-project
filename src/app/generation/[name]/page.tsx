@@ -53,13 +53,24 @@ export default function GenerationPage() {
             </header>
 
             <div id="generationInfo">
-                <h1 id="regionName">
+                <h1 id="regionName" className="text-center text-3xl">
                     {generation?.main_region.name && (
                         generation.main_region.name.charAt(0).toUpperCase() + generation.main_region.name.slice(1)
                     )} Region
                 </h1>
                 <div>
-
+                    <h1>
+                        Pokemon From {generation?.main_region.name && (
+                            generation.main_region.name.charAt(0).toUpperCase() + generation.main_region.name.slice(1)
+                        )}
+                        <ul>
+                            {generation?.pokemon_species.map((pokemon, index) => (
+                                <li key={index}>
+                                    {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
+                                </li>
+                            ))}
+                        </ul>
+                    </h1>
                 </div>
 
             </div>
