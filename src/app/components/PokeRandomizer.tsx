@@ -29,16 +29,17 @@ export default function PokeRandomizer() {
 
     <div>
       <div>
-        <ul>
+        <ul className="flex justify-center border rounded-2xl shadow-md ">
           {pokemon.map((pokemon, index) => (
-            <li key={index}>
+            <li key={index} className="text-sm p-4">
               #{pokemon.id} {' '}
-              {pokemon.name}
+              {pokemon.name[0].toUpperCase() + pokemon.name.slice(1)}
               <Image
+                className=""
                 src={pokemon.sprites.front_default}
                 alt={pokemon.name}
-                width={50}
-                height={50} />
+                width={75}
+                height={75} />
             </li>
           ))}
 
