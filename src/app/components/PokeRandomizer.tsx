@@ -28,7 +28,8 @@ export default function PokeRandomizer() {
   return (
 
 
-    <div>
+    <div className="p-2">
+      
       <div>
         <ul className="flex justify-center border rounded-2xl shadow-md ">
           {pokemon.map((pokemon, index) => (
@@ -45,7 +46,6 @@ export default function PokeRandomizer() {
               </Link>
             </li>
           ))}
-
         </ul>
       </div>
     </div>
