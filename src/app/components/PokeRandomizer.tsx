@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react"
 import { PokemonDetails, getPokemonDetails } from "../../../services/pokemon"
 import Image from "next/image";
+import Link from "next/link";
 
 export default function PokeRandomizer() {
   const [pokemon, setPokemon] = useState<PokemonDetails[]>([]);
@@ -34,12 +35,14 @@ export default function PokeRandomizer() {
             <li key={index} className="text-sm p-4">
               #{pokemon.id} {' '}
               {pokemon.name[0].toUpperCase() + pokemon.name.slice(1)}
+              <Link href={`/pokedex/${pokemon.name}`}>
               <Image
                 className=""
                 src={pokemon.sprites.front_default}
                 alt={pokemon.name}
                 width={75}
                 height={75} />
+              </Link>
             </li>
           ))}
 
